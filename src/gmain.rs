@@ -34,10 +34,12 @@ fn load_bindings<'a>(input: &Path, matches: &ArgMatches<'a>) -> Result<Bindings,
         matches.value_of("crate"),
         true,
         matches.is_present("clean"),
+        matches.is_present("only-target-dependencies"),
         matches.value_of("metadata").map(Path::new),
     )?;
 
     Builder::new()
+        .with_gobject(true)
         .with_cargo(lib)
         .generate()
 }
