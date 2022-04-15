@@ -1060,7 +1060,7 @@ impl Parse {
     fn load_syn_gboxed(&mut self, mod_cfg: Option<&Cfg>, item: &syn::ItemStruct) {
         for attr in item.attrs().iter().filter_map(|x| x.parse_meta().ok()) {
             if let syn::Meta::List(ref list) = attr {
-                if list.path.is_ident("gboxed") {
+                if list.path.is_ident("boxed_type") {
                     match GObject::load_boxed(mod_cfg, item, list) {
                         Ok(gi) => {
                             info!("Take {}.", item.ident);

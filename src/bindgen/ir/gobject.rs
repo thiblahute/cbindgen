@@ -140,7 +140,7 @@ impl GObject {
                 ..
             })) = m
             {
-                if path.is_ident("type_name") {
+                if path.is_ident("name") {
                     if let syn::Lit::Str(s) = lit {
                         type_name = Some(s.value());
                     }
